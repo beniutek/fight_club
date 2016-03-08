@@ -1,0 +1,44 @@
+body {
+  padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.portfolio-item {
+  margin:auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 300px;
+  width: 300px;
+}
+
+footer {
+  margin: 50px 0;
+}
+
+.portfolio-item > p, h3 {
+  text-align: center;
+}
+
+.circle-image{
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    background-image: url("http://placekitten.com/g/200/400");
+    margin: auto;
+}
+
+.wrapper {
+  margin:auto;
+  display: flex;
+  margin: auto;
+}
+
+.container.wrapper {
+  flex-direction: column;
+}
+
+h1.text-center {
+  margin-bottom: 25px;
+}
+
+

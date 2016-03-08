@@ -1,0 +1,41 @@
+<%= form_for(@fighter) do |f| %>
+  <% if @fighter.errors.any? %>
+    <%= render 'errors' %>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <%= f.fields_for :fighter_skills do |fs| %>
+    <div class="container">
+      <div class="row skillsGroup">
+        <div class="skillSelect">
+          <%= fs.collection_select :skill_id, @skills.order(:name), :id, :name, prompt: "Select skill"%>
+          <%= fs.number_field :value, min: 0 %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= button_tag "Add Skill", type: "button", id: "addButton", class: "btn btn-primary" %>
+    <%= button_tag "Remove", type: "button", id: "removeButton", class: "btn btn-danger" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary", id: "submitButton" %>
+  </div>
+<% end %>
+
