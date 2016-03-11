@@ -15,6 +15,7 @@ class FightsController < ApplicationController
   # GET /fights/new
   def new
     @fight = Fight.new
+    @fighters = Fighter.all
   end
 
   # GET /fights/1/edit
@@ -24,8 +25,8 @@ class FightsController < ApplicationController
   # POST /fights
   # POST /fights.json
   def create
-    @fight = Fight.new(fight_params)
-
+    @fight = build_fight(Fight.new)
+    byebug
     respond_to do |format|
       if @fight.save
         format.html { redirect_to @fight, notice: 'Fight was successfully created.' }
@@ -69,6 +70,15 @@ class FightsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fight_params
-      params.fetch(:fight, {})
+      params.require(:fight).permit(fighters: [:fighter_id, :opponent_id])
+    end
+
+    def build_fight(fight)
+      fight.fighters << find_fighters
+      return fight
+    end
+
+    def find_fighters
+      Fighter.where(id: fight_params[:fighters].values)
     end
 end

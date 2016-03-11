@@ -18,6 +18,11 @@
     <%= f.text_field :last_name %>
   </div>
 
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+
   <%= f.fields_for :fighter_skills do |fs| %>
     <div class="container">
       <div class="row skillsGroup">

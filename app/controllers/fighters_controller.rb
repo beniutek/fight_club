@@ -26,7 +26,7 @@ class FightersController < ApplicationController
   # POST /fighters
   # POST /fighters.json
   def create
-    byebug
+
     @fighter = Fighter.new(fighter_params)
 
     respond_to do |format|
