@@ -1,4 +1,4 @@
-<%= form_for(@fighter) do |f| %>
+<%= form_for @fighter, html: { multipart: true } do |f| %>
   <% if @fighter.errors.any? %>
     <%= render 'errors' %>
   <% end %>
@@ -16,6 +16,12 @@
   <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+    <%= f.text_field :remote_image_url %>
   </div>
 
   <%= f.fields_for :fighter_skills do |fs| %>

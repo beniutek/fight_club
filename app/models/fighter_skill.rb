@@ -5,5 +5,5 @@ class FighterSkill < ActiveRecord::Base
 
   accepts_nested_attributes_for :skill
 
-  validates :fighter, uniqueness: { scope: :skill, message: "duplicated skill" }
+  validates_uniqueness_of :skill_id, scope: :fighter_id
 end

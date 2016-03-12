@@ -1,4 +1,6 @@
 class Fighter < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
+
   has_many :fighter_skills, inverse_of: :fighter, autosave: true, dependent: :destroy
   has_many :fighter_fights
   has_many :fights, through: :fighter_fights

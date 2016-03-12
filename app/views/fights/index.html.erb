@@ -30,7 +30,7 @@
             <img class="img-responsive circle-image">
         </a>
         <h3>
-          <%= linkt_to fight.fighters.last.nickname, fighter_path(fight.fighters.last) %>
+          <%= link_to fight.fighters.last.nickname, fighter_path(fight.fighters.last) %>
         </h3>
         <p><%= "#{fight.fighters.last.first_name} #{fight.fighters.last.last_name}" %></p>
       </div>

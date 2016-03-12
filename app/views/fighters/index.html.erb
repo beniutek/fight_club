@@ -5,9 +5,7 @@
   <div class="container">
     <div class="row wrapper">
       <div class="col-sm-4 portfolio-item">
-        <a href="#">
-            <img class="img-responsive circle-image">
-        </a>
+        <%= image_tag(fighter.image.normal.url, class: "img-responsive circle-image") unless fighter.image.nil? %>
       </div>
 
       <div class="col-sm-4">

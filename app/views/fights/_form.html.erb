@@ -1,16 +1,12 @@
 <%= form_for(@fight) do |f| %>
   <% if @fight.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@fight.errors.count, "error") %> prohibited this fight from being saved:</h2>
-
-      <ul>
-      <% @fight.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= render 'errors' %>
   <% end %>
+  <%= f.fields_for :fighters do |fighter| %>
+    <%= fighter.collection_select :fighter_id, @fighters.order(:nickname), :id, :nickname, prompt: "Select fighter"%>
 
+    <%= fighter.collection_select :opponent_id, @fighters.order(:nickname), :id, :nickname, prompt: "Select fighter"%>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
