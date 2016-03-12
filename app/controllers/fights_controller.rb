@@ -32,6 +32,7 @@ class FightsController < ApplicationController
         format.html { redirect_to @fight, notice: 'Fight was successfully created.' }
         format.json { render :show, status: :created, location: @fight }
       else
+        @fighters = Fighter.all
         format.html { render :new }
         format.json { render json: @fight.errors, status: :unprocessable_entity }
       end

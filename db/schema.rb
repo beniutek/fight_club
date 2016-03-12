@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306222629) do
+ActiveRecord::Schema.define(version: 20160312121824) do
 
   create_table "fighter_fights", force: :cascade do |t|
     t.integer "fighter_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160306222629) do
     t.integer "fighter_id"
   end
 
+  add_index "fighter_skills", ["fighter_id", "skill_id"], name: "index_fighter_skills_on_fighter_id_and_skill_id", unique: true
   add_index "fighter_skills", ["fighter_id"], name: "index_fighter_skills_on_fighter_id"
   add_index "fighter_skills", ["skill_id"], name: "index_fighter_skills_on_skill_id"
 

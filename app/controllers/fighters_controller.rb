@@ -28,6 +28,9 @@ class FightersController < ApplicationController
   def create
 
     @fighter = Fighter.new(fighter_params)
+    @skills = Skill.all
+
+    byebug
 
     respond_to do |format|
       if @fighter.save
@@ -72,6 +75,6 @@ class FightersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fighter_params
-      params.require(:fighter).permit(:first_name, :last_name, :nickname, fighter_skills_attributes: [:skill_id, :value])
+      params.require(:fighter).permit(:first_name, :last_name, :nickname, :image, :remote_image_url, fighter_skills_attributes: [:skill_id, :value])
     end
 end

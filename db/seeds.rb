@@ -27,6 +27,8 @@ def fighter_create
     skill.save
   end
 
+  fighter.remote_image_url = Faker::Avatar.image(fighter.nickname, "300x300", 'jpg')
+
   fighter.save
 end
 
