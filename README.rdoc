@@ -3,26 +3,11 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+We should not talk about the fight club but:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+1. we use mini_magick, it needs to be installed to properly handle images see: https://github.com/minimagick/minimagick
+and dont forget to `brew install imagemagick`
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
