@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   resources :fights
-  resources :fighters
+  resources :fighters do
+    collection do
+      get 'most_wins'
+      get 'most_fights'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

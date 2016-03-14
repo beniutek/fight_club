@@ -12,6 +12,15 @@ class FightersController < ApplicationController
   def show
   end
 
+  def most_fights
+    @fighters = Fighter.most_fights.includes(:skills)
+    render 'index'
+  end
+
+  def most_wins
+    @fighters = Fighter.most_wins.includes(:skills)
+    render 'index'
+  end
   # GET /fighters/new
   def new
     @fighter = Fighter.new

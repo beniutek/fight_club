@@ -12,9 +12,7 @@
 
     <div class="row wrapper">
       <div class="col-sm-4 portfolio-item">
-        <a href="#">
-            <img class="img-responsive circle-image">
-        </a>
+        <%= image_tag(fight.fighters.first.image.normal.url, class: "img-responsive circle-image") unless fight.fighters.first.image.nil? %>
         <h3>
             <%= link_to fight.fighters.first.nickname, fighter_path(fight.fighters.first) %>
         </h3>
@@ -27,7 +25,7 @@
 
       <div class="col-sm-4 portfolio-item">
         <a href="#">
-            <img class="img-responsive circle-image">
+            <%= image_tag(fight.fighters.last.image.normal.url, class: "img-responsive circle-image") unless fight.fighters.last.image.nil? %>
         </a>
         <h3>
           <%= link_to fight.fighters.last.nickname, fighter_path(fight.fighters.last) %>

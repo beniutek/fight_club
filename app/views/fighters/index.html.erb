@@ -13,7 +13,9 @@
           <h3>
             <%= link_to fighter.nickname, fighter_path(fighter) %>
           </h3>
-          <p><%= "#{fighter.first_name} #{fighter.last_name}" %></p>
+          <p>
+            <%= "#{fighter.first_name} #{fighter.last_name}" %> | <%= "#{fighter.fights_won.count} fights won" %>
+          </p>
         </div>
         <div class="row">
           <ul>

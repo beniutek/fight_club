@@ -19,6 +19,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.6.0'
   gem 'faker', '~> 1.6', '>= 1.6.3'
+  gem 'hirb'
 end
 
 group :development do
