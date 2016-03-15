@@ -24,11 +24,11 @@ RSpec.describe FightersController, type: :controller do
   # Fighter. As you add validations to Fighter, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { first_name: "fname", nickname: "nickname"}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { first_name: "fname", nickname: '' }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,13 @@ RSpec.describe FightersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { first_name: 'new_fname', nickname: 'new_nickname' }
       }
 
       it "updates the requested fighter" do
         fighter = Fighter.create! valid_attributes
         put :update, {:id => fighter.to_param, :fighter => new_attributes}, valid_session
-        fighter.reload
-        skip("Add assertions for updated state")
+        expect(fighter.reload.nickname).to eq new_attributes[:nickname]
       end
 
       it "assigns the requested fighter as @fighter" do

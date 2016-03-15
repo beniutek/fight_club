@@ -39,8 +39,6 @@ class FightersController < ApplicationController
     @fighter = Fighter.new(fighter_params)
     @skills = Skill.all
 
-    byebug
-
     respond_to do |format|
       if @fighter.save
         format.html { redirect_to @fighter, notice: 'Fighter was successfully created.' }
