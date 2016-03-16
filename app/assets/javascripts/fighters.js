@@ -2,14 +2,14 @@
 // All this logic will automatically be available in application.js.
 
 $(function () {
-  disable_submit_button();
+  disableSubmitButton();
 
   $("#addButton").on("click", function () {
     if ($(".skillSelect").length > 4) {
       alert("Only 5 skills allowed");
       return false;
     }
-    add_fighter_skill_element();
+    addFighterSkillElement();
   });
 
   $("#removeButton").on("click", function () {
@@ -21,21 +21,21 @@ $(function () {
     $(".skillSelect").last().remove();
     removeAttribute(lastElementVal,'disabled');
 
-    enable_submit_button($("[id^=fighter_fighter_skills_attributes] option:selected"));
+    enableSubmitButton($("[id^=fighter_fighter_skills_attributes] option:selected"));
   });
 
   $(".skillsGroup").on("change", function() {
-    var options_to_disable = $("[id^=fighter_fighter_skills_attributes] option:selected");
-    var all_options = $("select [id!=skill_id]");
-    var values_to_disable = $.map(options_to_disable,function(opt) { return opt.value })
-    var values_to_free = $.map(all_options,function(opt) { return opt.value })
+    var optionsToDisable = $("[id^=fighter_fighter_skills_attributes] option:selected");
+    var allOptions = $("select [id!=skill_id]");
+    var valuesToDisable = $.map(optionsToDisable,function(opt) { return opt.value })
+    var valuesToFree = $.map(allOptions,function(opt) { return opt.value })
 
-    values_to_free = get_values_to_free(values_to_free,values_to_disable);
+    valuesToFree = getValuesToFree(valuesToFree,valuesToDisable);
 
-    $(values_to_disable).each(function() { addAttribute(all_options, this, 'disabled'); });
-    $(values_to_free).each(function() { removeAttribute(all_options, this, 'disabled'); });
+    $(valuesToDisable).each(function() { addAttribute(allOptions, this, 'disabled'); });
+    $(valuesToFree).each(function() { removeAttribute(allOptions, this, 'disabled'); });
 
-    enable_submit_button(options_to_disable);
+    enableSubmitButton(optionsToDisable);
   });
 
   $('#submitButton').on('click', function () { $('option').removeAttr('disabled'); });
@@ -53,21 +53,21 @@ function handleImageInput(element, target) {
 }
 
 
-function enable_submit_button(options) {
+function enableSubmitButton(options) {
   var button = $('#submitButton');
-  var options_values = $.map(options,function(option) { return option.value });
-  if( options_values.indexOf("") === -1 && options_values.length > 0) {
+  var optionsValues = $.map(options,function(option) { return option.value });
+  if( optionsValues.indexOf("") === -1 && optionsValues.length > 0) {
     button.removeAttr('disabled');
   } else {
     button.attr('disabled','disabled');
   }
 }
 
-function disable_submit_button() {
+function disableSubmitButton() {
   $('#submitButton').attr('disabled','disabled');
 }
 
-function get_values_to_free(arr1,arr2) {
+function getValuesToFree(arr1,arr2) {
   return $.unique(arr1).filter(function(val) {
     return arr2.indexOf(val) === -1;
   });
@@ -79,21 +79,21 @@ function removeAttribute(element, value, attr) {
   $(element).filter("[value='"+value+"']").removeAttr(attr);
 }
 
-function incremented_name(name, number) {
+function incrementName(name, number) {
   return name.replace(/\d+/, number);
 }
 
-function add_fighter_skill_element() {
+function addFighterSkillElement() {
   var newType = $(".skillSelect").first().clone().addClass("skillSelect");
   var incrementBy = $(".skillSelect").length;
   var select = newType[0].children[0];
   var input = newType[0].children[1];
 
-  newType[0].children[0].name = incremented_name(select.name, incrementBy);
-  newType[0].children[0].id = incremented_name(select.id, incrementBy);
-  newType[0].children[1].name = incremented_name(input.name, incrementBy);
-  newType[0].children[1].id = incremented_name(input.id, incrementBy);
+  newType[0].children[0].name = incrementName(select.name, incrementBy);
+  newType[0].children[0].id = incrementName(select.id, incrementBy);
+  newType[0].children[1].name = incrementName(input.name, incrementBy);
+  newType[0].children[1].id = incrementName(input.id, incrementBy);
 
-  disable_submit_button();
+  disableSubmitButton();
   newType.appendTo(".skillsGroup");
 }
