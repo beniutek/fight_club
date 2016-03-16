@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :fights
+  resources :fights, except: [:update, :update, :destroy]
   resources :fighters do
     collection do
       get 'most_wins'

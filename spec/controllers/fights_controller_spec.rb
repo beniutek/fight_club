@@ -61,14 +61,6 @@ RSpec.describe FightsController, type: :controller do
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested fight as @fight" do
-      fight = create :fight
-      get :edit, {:id => fight.to_param}, valid_session
-      expect(assigns(:fight)).to eq(fight)
-    end
-  end
-
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Fight" do
@@ -101,20 +93,4 @@ RSpec.describe FightsController, type: :controller do
       end
     end
   end
-
-  describe "DELETE #destroy" do
-    it "destroys the requested fight" do
-      fight = create :fight
-      expect {
-        delete :destroy, {:id => fight.to_param}, valid_session
-      }.to change(Fight, :count).by(-1)
-    end
-
-    it "redirects to the fights list" do
-      fight = create :fight
-      delete :destroy, {:id => fight.to_param}, valid_session
-      expect(response).to redirect_to(fights_url)
-    end
-  end
-
 end

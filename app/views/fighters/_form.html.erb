@@ -18,10 +18,10 @@
     <%= f.text_field :last_name %>
   </div>
 
-  <div class="field">
+  <div class="field" id="imageField">
     <%= f.label :image %><br>
-    <%= f.file_field :image %>
-    <%= f.text_field :remote_image_url %>
+    <%= f.file_field :image, class: "fromPc" %>
+    <%= f.text_field :remote_image_url, class: "fromNet" %>
   </div>
 
   <%= f.fields_for :fighter_skills do |fs| %>

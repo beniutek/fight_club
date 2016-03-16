@@ -39,7 +39,19 @@ $(function () {
   });
 
   $('#submitButton').on('click', function () { $('option').removeAttr('disabled'); });
+
+  $('.fromPc').on('change', function(event) { handleImageInput(event,'.fromNet') });
+  $('.fromNet').on('change', function(event) { handleImageInput(event,'.fromPc') });
 });
+
+function handleImageInput(element, target) {
+  if(element.currentTarget.value === '' || element.currentTarget.value === 'undefined' ) {
+    $(target).removeAttr('disabled');
+  } else {
+    $(target).attr('disabled','disabled');
+  }
+}
+
 
 function enable_submit_button(options) {
   var button = $('#submitButton');
