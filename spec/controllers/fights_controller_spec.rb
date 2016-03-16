@@ -23,12 +23,14 @@ RSpec.describe FightsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Fight. As you add validations to Fight, be sure to
   # adjust the attributes here as well.
+  let!(:fighter_1) { create :fighter }
+  let!(:fighter_2) { create :fighter }
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { fighters: { fighter_id: fighter_1.id, opponent_id: fighter_2.id } }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { fighters: { fighter_id: fighter_1.id } }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -38,7 +40,7 @@ RSpec.describe FightsController, type: :controller do
 
   describe "GET #index" do
     it "assigns all fights as @fights" do
-      fight = Fight.create! valid_attributes
+      fight = create :fight
       get :index, {}, valid_session
       expect(assigns(:fights)).to eq([fight])
     end
@@ -46,7 +48,7 @@ RSpec.describe FightsController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested fight as @fight" do
-      fight = Fight.create! valid_attributes
+      fight = create :fight
       get :show, {:id => fight.to_param}, valid_session
       expect(assigns(:fight)).to eq(fight)
     end
@@ -61,7 +63,7 @@ RSpec.describe FightsController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested fight as @fight" do
-      fight = Fight.create! valid_attributes
+      fight = create :fight
       get :edit, {:id => fight.to_param}, valid_session
       expect(assigns(:fight)).to eq(fight)
     end
@@ -100,57 +102,16 @@ RSpec.describe FightsController, type: :controller do
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested fight" do
-        fight = Fight.create! valid_attributes
-        put :update, {:id => fight.to_param, :fight => new_attributes}, valid_session
-        fight.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "assigns the requested fight as @fight" do
-        fight = Fight.create! valid_attributes
-        put :update, {:id => fight.to_param, :fight => valid_attributes}, valid_session
-        expect(assigns(:fight)).to eq(fight)
-      end
-
-      it "redirects to the fight" do
-        fight = Fight.create! valid_attributes
-        put :update, {:id => fight.to_param, :fight => valid_attributes}, valid_session
-        expect(response).to redirect_to(fight)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns the fight as @fight" do
-        fight = Fight.create! valid_attributes
-        put :update, {:id => fight.to_param, :fight => invalid_attributes}, valid_session
-        expect(assigns(:fight)).to eq(fight)
-      end
-
-      it "re-renders the 'edit' template" do
-        fight = Fight.create! valid_attributes
-        put :update, {:id => fight.to_param, :fight => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
-
   describe "DELETE #destroy" do
     it "destroys the requested fight" do
-      fight = Fight.create! valid_attributes
+      fight = create :fight
       expect {
         delete :destroy, {:id => fight.to_param}, valid_session
       }.to change(Fight, :count).by(-1)
     end
 
     it "redirects to the fights list" do
-      fight = Fight.create! valid_attributes
+      fight = create :fight
       delete :destroy, {:id => fight.to_param}, valid_session
       expect(response).to redirect_to(fights_url)
     end

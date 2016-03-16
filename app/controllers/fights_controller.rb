@@ -26,7 +26,6 @@ class FightsController < ApplicationController
   # POST /fights.json
   def create
     @fight = build_fight(Fight.new)
-    byebug
     respond_to do |format|
       if @fight.save
         format.html { redirect_to @fight, notice: 'Fight was successfully created.' }
