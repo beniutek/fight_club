@@ -5,6 +5,7 @@ class Fight < ActiveRecord::Base
   validate :has_two_fighters
 
   after_create :set_winner, :update_fighters
+
   def has_two_fighters
     if fighters.size != 2
       errors.add(:fight, "has to have 2 fighters")
@@ -27,5 +28,4 @@ class Fight < ActiveRecord::Base
     winner.lvl_up 2
     looser.lvl_up
   end
-
 end
