@@ -135,6 +135,8 @@ GEM
     rake (10.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    react_webpack_rails (0.2.1)
+      rails (>= 3.2)
     rspec-core (3.4.3)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -208,6 +210,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.5.1)
   rails-assets-tether (>= 1.1.0)!
+  react_webpack_rails (~> 0.2.1)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

@@ -14,6 +14,8 @@
 //= require tether
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require react_integration
+//= require react_bundle
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .

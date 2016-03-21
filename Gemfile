@@ -9,6 +9,7 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'turbolinks'
+gem 'react_webpack_rails', '~>0.2.1'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc

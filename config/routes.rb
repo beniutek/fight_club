@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'react_examples/component', to: 'react_examples#component', as: :component
   resources :fights, except: [:update, :update, :destroy]
   resources :fighters do
     collection do
