@@ -15,6 +15,8 @@ $(function() {
     }
     handleSelectChange($("[id^=fight_fighters] option:selected"), $("select [id!=skill_id]"));
   });
+
+  $('#sendButton').on('click', function () { $('option').removeAttr('disabled'); });
 });
 
 function fetchFighter(context, val, element) {
