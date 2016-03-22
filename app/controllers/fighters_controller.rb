@@ -10,6 +10,10 @@ class FightersController < ApplicationController
   # GET /fighters/1
   # GET /fighters/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @fighter }
+    end
   end
 
   def most_fights

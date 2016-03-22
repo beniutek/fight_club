@@ -17,23 +17,16 @@ $(function () {
       alert("At least one skill should be present");
       return false;
     }
-    var lastElementVal = $(".skillSelect").last().children().first()[0].value
     $(".skillSelect").last().remove();
-    removeAttribute(lastElementVal,'disabled');
-
-    enableSubmitButton($("[id^=fighter_fighter_skills_attributes] option:selected"));
+    var optionsToDisable = $("[id^=fighter_fighter_skills_attributes] option:selected");
+    handleSelectChange(optionsToDisable, $("select [id!=skill_id]"));
+    enableSubmitButton(optionsToDisable);
   });
 
   $(".skillsGroup").on("change", function() {
     var optionsToDisable = $("[id^=fighter_fighter_skills_attributes] option:selected");
-    var allOptions = $("select [id!=skill_id]");
-    var valuesToDisable = $.map(optionsToDisable,function(opt) { return opt.value })
-    var valuesToFree = $.map(allOptions,function(opt) { return opt.value })
 
-    valuesToFree = getValuesToFree(valuesToFree,valuesToDisable);
-
-    $(valuesToDisable).each(function() { addAttribute(allOptions, this, 'disabled'); });
-    $(valuesToFree).each(function() { removeAttribute(allOptions, this, 'disabled'); });
+    handleSelectChange(optionsToDisable, $("select [id!=skill_id]"));
 
     enableSubmitButton(optionsToDisable);
   });
@@ -65,18 +58,6 @@ function enableSubmitButton(options) {
 
 function disableSubmitButton() {
   $('#submitButton').attr('disabled','disabled');
-}
-
-function getValuesToFree(arr1,arr2) {
-  return $.unique(arr1).filter(function(val) {
-    return arr2.indexOf(val) === -1;
-  });
-}
-function addAttribute(element, value, attr) {
-  $(element).filter("[value='"+value+"']").attr(attr,attr);
-}
-function removeAttribute(element, value, attr) {
-  $(element).filter("[value='"+value+"']").removeAttr(attr);
 }
 
 function incrementName(name, number) {
