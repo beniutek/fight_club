@@ -1,8 +1,9 @@
+
 <h1 class="text-center">Listing Fighters</h1>
 
 <% @fighters.each do |fighter| %>
 
-  <div class="container">
+
     <div class="row wrapper">
       <div class="col-sm-4 portfolio-item">
         <%= image_tag(fighter.image.normal.url, class: "img-responsive circle-image") unless fighter.image.nil? %>
@@ -26,9 +27,6 @@
         </div>
       </div>
     </div>
-
-
-  </div>
 <% end %>
 
 <%= link_to 'New Fight', new_fight_path %>
