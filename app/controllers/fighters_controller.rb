@@ -10,6 +10,9 @@ class FightersController < ApplicationController
   # GET /fighters/1
   # GET /fighters/1.json
   def show
+    @comments = @fighter.comments
+    @new_comment = @fighter.comments.new
+
     respond_to do |format|
       format.html
       format.json { render json: @fighter }

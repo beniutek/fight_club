@@ -5,6 +5,7 @@ class Fighter < ActiveRecord::Base
   has_many :fighter_fights
   has_many :fights, through: :fighter_fights
   has_many :skills, through: :fighter_skills
+  has_many :comments
 
   accepts_nested_attributes_for :fighter_skills, allow_destroy: :true, reject_if: :all_blank
 
