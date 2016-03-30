@@ -1,27 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
-    <div class="row wrapper">
-      <div class="col-sm-4 portfolio-item">
-        <%= image_tag(@fighter.image.normal.url, class: "img-responsive circle-image") unless @fighter.image.nil? %>
-      </div>
+<div class="row wrapper">
+  <div class="col-sm-2 portfolio-item">
+    <%= image_tag(@fighter.image.normal.url, class: "img-responsive circle-image") unless @fighter.image.nil? %>
+  </div>
 
-      <div class="col-sm-4">
-        <div class="row">
-          <h3>
-            <%= link_to @fighter.nickname, fighter_path(@fighter) %>
-          </h3>
-          <p><%= "#{@fighter.first_name} #{@fighter.last_name}" %></p>
-        </div>
-        <div class="row">
-          <ul>
-            <% @fighter.fighter_skills.each do |fskill| %>
-              <li><%= fskill.skill.name+" "+fskill.value.to_s %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
+  <div class="col-sm-2">
+    <div class="row">
+      <h3>
+        <%= link_to @fighter.nickname, fighter_path(@fighter) %>
+      </h3>
+      <p><%= "#{@fighter.first_name} #{@fighter.last_name}" %></p>
     </div>
+    <div class="row">
+      <ul>
+        <% @fighter.fighter_skills.each do |fskill| %>
+          <li><%= fskill.skill.name+" "+fskill.value.to_s %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
 
 <%= link_to 'Edit', edit_fighter_path(@fighter) %> |
 <%= link_to 'Back', fighters_path %>
